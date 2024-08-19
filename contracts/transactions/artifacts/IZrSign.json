@@ -1,0 +1,342 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"getBaseFee()": "15e812ad",
+			"getNetworkFee()": "fc043830",
+			"getTraceId()": "379e3349",
+			"getZrKey(bytes32,address,uint256)": "187e5818",
+			"getZrKeys(bytes32,address)": "a11a572d",
+			"isChainIdSupported(bytes32,bytes32)": "aa400591",
+			"isWalletTypeSupported(bytes32)": "b3f63094",
+			"zrKeyReq((bytes32))": "331eba82",
+			"zrSignData((bytes32,uint256,bytes32,bytes,bool))": "052347e6",
+			"zrSignHash((bytes32,uint256,bytes32,bytes,bool))": "15c39391",
+			"zrSignTx((bytes32,uint256,bytes32,bytes,bool))": "93f874c4"
+		}
+	},
+	"abi": [
+		{
+			"inputs": [],
+			"name": "getBaseFee",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "getNetworkFee",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "getTraceId",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes32",
+					"name": "walletTypeId",
+					"type": "bytes32"
+				},
+				{
+					"internalType": "address",
+					"name": "owner",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "index",
+					"type": "uint256"
+				}
+			],
+			"name": "getZrKey",
+			"outputs": [
+				{
+					"internalType": "string",
+					"name": "",
+					"type": "string"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes32",
+					"name": "walletTypeId",
+					"type": "bytes32"
+				},
+				{
+					"internalType": "address",
+					"name": "owner",
+					"type": "address"
+				}
+			],
+			"name": "getZrKeys",
+			"outputs": [
+				{
+					"internalType": "string[]",
+					"name": "",
+					"type": "string[]"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes32",
+					"name": "walletTypeId",
+					"type": "bytes32"
+				},
+				{
+					"internalType": "bytes32",
+					"name": "chainId",
+					"type": "bytes32"
+				}
+			],
+			"name": "isChainIdSupported",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes32",
+					"name": "walletTypeId",
+					"type": "bytes32"
+				}
+			],
+			"name": "isWalletTypeSupported",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"internalType": "bytes32",
+							"name": "walletTypeId",
+							"type": "bytes32"
+						}
+					],
+					"internalType": "struct SignTypes.ZrKeyReqParams",
+					"name": "params",
+					"type": "tuple"
+				}
+			],
+			"name": "zrKeyReq",
+			"outputs": [],
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"internalType": "bytes32",
+							"name": "walletTypeId",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "uint256",
+							"name": "walletIndex",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "dstChainId",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "bytes",
+							"name": "payload",
+							"type": "bytes"
+						},
+						{
+							"internalType": "bool",
+							"name": "broadcast",
+							"type": "bool"
+						}
+					],
+					"internalType": "struct SignTypes.ZrSignParams",
+					"name": "params",
+					"type": "tuple"
+				}
+			],
+			"name": "zrSignData",
+			"outputs": [],
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"internalType": "bytes32",
+							"name": "walletTypeId",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "uint256",
+							"name": "walletIndex",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "dstChainId",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "bytes",
+							"name": "payload",
+							"type": "bytes"
+						},
+						{
+							"internalType": "bool",
+							"name": "broadcast",
+							"type": "bool"
+						}
+					],
+					"internalType": "struct SignTypes.ZrSignParams",
+					"name": "params",
+					"type": "tuple"
+				}
+			],
+			"name": "zrSignHash",
+			"outputs": [],
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"internalType": "bytes32",
+							"name": "walletTypeId",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "uint256",
+							"name": "walletIndex",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "dstChainId",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "bytes",
+							"name": "payload",
+							"type": "bytes"
+						},
+						{
+							"internalType": "bool",
+							"name": "broadcast",
+							"type": "bool"
+						}
+					],
+					"internalType": "struct SignTypes.ZrSignParams",
+					"name": "params",
+					"type": "tuple"
+				}
+			],
+			"name": "zrSignTx",
+			"outputs": [],
+			"stateMutability": "payable",
+			"type": "function"
+		}
+	]
+}

@@ -1,0 +1,227 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "WalletCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "WalletUpdated",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "createWallet",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					}
+				],
+				"name": "getWalletOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					}
+				],
+				"name": "isValidWallet",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "isValid",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "updateWalletOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Interface for managing wallets in a decentralized system.",
+			"events": {
+				"WalletCreated(address,address)": {
+					"params": {
+						"owner": "Address of the wallet owner.",
+						"walletAddress": "Address of the newly created wallet."
+					}
+				},
+				"WalletUpdated(address,address)": {
+					"params": {
+						"newOwner": "Address of the new owner.",
+						"walletAddress": "Address of the updated wallet."
+					}
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"createWallet(address)": {
+					"params": {
+						"owner": "Address of the wallet owner."
+					},
+					"returns": {
+						"walletAddress": "Address of the newly created wallet."
+					}
+				},
+				"getWalletOwner(address)": {
+					"params": {
+						"walletAddress": "Address of the wallet."
+					},
+					"returns": {
+						"owner": "Address of the wallet owner."
+					}
+				},
+				"isValidWallet(address)": {
+					"params": {
+						"walletAddress": "Address to be checked."
+					},
+					"returns": {
+						"isValid": "True if the address is a valid wallet, false otherwise."
+					}
+				},
+				"updateWalletOwnership(address,address)": {
+					"params": {
+						"newOwner": "Address of the new owner.",
+						"walletAddress": "Address of the wallet to be updated."
+					}
+				}
+			},
+			"title": "IWalletManager",
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"WalletCreated(address,address)": {
+					"notice": "Emitted when a new wallet is created."
+				},
+				"WalletUpdated(address,address)": {
+					"notice": "Emitted when a wallet is updated."
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"createWallet(address)": {
+					"notice": "Creates a new wallet and assigns it to the specified owner."
+				},
+				"getWalletOwner(address)": {
+					"notice": "Retrieves the owner of a specific wallet."
+				},
+				"isValidWallet(address)": {
+					"notice": "Checks if an address is a valid wallet."
+				},
+				"updateWalletOwnership(address,address)": {
+					"notice": "Updates the ownership of an existing wallet."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/interfaces/IWalletManager.sol": "IWalletManager"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/interfaces/IWalletManager.sol": {
+			"keccak256": "0xc4214786cf43e75d353f73e1445fb5575102fd9495a64bfff74d1a27b648292c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8ffbe2ae6b4b0e15fa4b6fd7831dfb5b8e3c808d271143c299b907f3bc77ba9b",
+				"dweb:/ipfs/QmVmGS5p3LKCjLyng1Nmd9YyxL1rzdaFgRy3WAJbcHYUhG"
+			]
+		}
+	},
+	"version": 1
+}

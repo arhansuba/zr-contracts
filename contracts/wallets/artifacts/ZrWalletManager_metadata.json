@@ -1,0 +1,290 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address[]",
+						"name": "owners",
+						"type": "address[]"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "requiredConfirmations",
+						"type": "uint256"
+					}
+				],
+				"name": "WalletCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "oldOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "WalletOwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_owners",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_requiredConfirmations",
+						"type": "uint256"
+					}
+				],
+				"name": "createWallet",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "deployedWallets",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getDeployedWallets",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					}
+				],
+				"name": "getWalletDetails",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "owners",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "requiredConfirmations",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferWalletOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "walletOwners",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "walletRequiredConfirmations",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Contract to manage multiple ZrWallet instances and perform administrative tasks.",
+			"kind": "dev",
+			"methods": {
+				"createWallet(address[],uint256)": {
+					"params": {
+						"_owners": "Array of owner addresses.",
+						"_requiredConfirmations": "Number of confirmations required for transactions."
+					},
+					"returns": {
+						"walletAddress": "Address of the newly created wallet."
+					}
+				},
+				"getDeployedWallets()": {
+					"returns": {
+						"_0": "Array of wallet addresses."
+					}
+				},
+				"getWalletDetails(address)": {
+					"params": {
+						"walletAddress": "Address of the wallet."
+					},
+					"returns": {
+						"owners": "Array of owner addresses.",
+						"requiredConfirmations": "Number of required confirmations for transactions."
+					}
+				},
+				"transferWalletOwnership(address,address)": {
+					"params": {
+						"newOwner": "Address of the new owner.",
+						"walletAddress": "Address of the wallet."
+					}
+				}
+			},
+			"title": "ZrWalletManager",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"createWallet(address[],uint256)": {
+					"notice": "Create a new ZrWallet instance."
+				},
+				"getDeployedWallets()": {
+					"notice": "Get the list of deployed ZrWallet addresses."
+				},
+				"getWalletDetails(address)": {
+					"notice": "Get wallet details."
+				},
+				"transferWalletOwnership(address,address)": {
+					"notice": "Transfer ownership of a ZrWallet instance."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/wallets/ZrWalletManager.sol": "ZrWalletManager"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/wallets/ZrWallet.sol": {
+			"keccak256": "0x80aefffe849f1064624516dcde5d3bef5e2d9f5f876999373c61a7fa8816fda2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c3f936f7ae46e319ffcdefedfd12a2b856ece976f6c1261c2e42001be007d041",
+				"dweb:/ipfs/QmRnfJcCrNSzjpFKofmwfNvMUkZi4t3Eyoj6tdEmAyuSmc"
+			]
+		},
+		"contracts/wallets/ZrWalletManager.sol": {
+			"keccak256": "0x1bf2988fe9375e0309f28788966b368588856e9a38159f98ed81d22bb089c3f4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9ef730c3229c552e2c19bc0dffb920ba01bbcd857940293b017af8a982fdf2a5",
+				"dweb:/ipfs/QmTBdXF4cxXrEvsK6Jz4fNCdRauW7gtkdrYMxShuen2xhg"
+			]
+		}
+	},
+	"version": 1
+}

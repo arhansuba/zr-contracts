@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/libraries/SignTypes.sol": "SignTypes"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/libraries/SignTypes.sol": {
+			"keccak256": "0x7fe1bd2413d4acea104fda434a0b1cbf892de9e3ad71b0f49c6a5f28f25b82c0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6052178154b4831a0c1dcc5ac8f817f2f00390698cfd6caaa0ba32b6bfb7dd53",
+				"dweb:/ipfs/Qmf7uFVnyMxpFRW2byHKwG1Lktb37UiJBqY7M5XCkxt5zk"
+			]
+		}
+	},
+	"version": 1
+}

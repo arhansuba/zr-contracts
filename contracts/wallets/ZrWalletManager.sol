@@ -1,8 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-
-import "./ZrWallet.sol";
-
+import"./ZrWallet.sol";
+interface IZrWallet {
+    function isOwner(address account) external view returns (bool);
+    function addOwner(address newOwner) external;
+    function removeOwner(address owner) external;
+}
 
 /**
  * @title ZrWalletManager
@@ -11,7 +14,7 @@ import "./ZrWallet.sol";
 contract ZrWalletManager {
     // Events
     event WalletCreated(address indexed walletAddress, address[] owners, uint256 requiredConfirmations);
-    event WalletOwnershipTransferred(address indexed walletAddress, address indexed newOwner);
+    event WalletOwnershipTransferred(address indexed walletAddress, address indexed oldOwner, address indexed newOwner);
 
     // State variables
     mapping(address => address[]) public walletOwners;
@@ -19,8 +22,8 @@ contract ZrWalletManager {
     address[] public deployedWallets;
 
     // Modifiers
-        require(ZrWallet(walletAddress).isOwner(msg.sender), "Not authorized: Caller is not an owner)");
-        require(payable(address(ZrWallet(walletAddress))).isOwner(msg.sender), "Not authorized: Caller is not an owner");
+    modifier onlyWalletOwner(address walletAddress) {
+        require(IZrWallet(walletAddress).isOwner(msg.sender), "Not authorized: Caller is not an owner");
         _;
     }
 
@@ -34,7 +37,8 @@ contract ZrWalletManager {
         require(_owners.length > 0, "No owners provided");
         require(_requiredConfirmations > 0 && _requiredConfirmations <= _owners.length, "Invalid number of required confirmations");
 
-        ZrWallet wallet = new ZrWallet(_owners, _requiredConfirmations);
+        // Note: You'll need to update this line to match your ZrWallet constructor
+        IZrWallet wallet = IZrWallet(payable(new ZrWallet(_owners, _requiredConfirmations)));
         walletAddress = address(wallet);
 
         // Record wallet details
@@ -52,16 +56,24 @@ contract ZrWalletManager {
      */
     function transferWalletOwnership(address walletAddress, address newOwner) external onlyWalletOwner(walletAddress) {
         require(newOwner != address(0), "Invalid address: New owner cannot be zero address");
+        require(newOwner != msg.sender, "New owner must be different from the current owner");
 
-        // Update owner list
+        IZrWallet wallet = IZrWallet(payable(walletAddress));
+
+        // Remove the old owner and add the new owner
+        wallet.removeOwner(msg.sender);
+        wallet.addOwner(newOwner);
+
+        // Update our internal record
         address[] storage owners = walletOwners[walletAddress];
         for (uint i = 0; i < owners.length; i++) {
             if (owners[i] == msg.sender) {
                 owners[i] = newOwner;
-                emit WalletOwnershipTransferred(walletAddress, newOwner);
                 break;
             }
         }
+
+        emit WalletOwnershipTransferred(walletAddress, msg.sender, newOwner);
     }
 
     /**

@@ -1,0 +1,278 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_initialImplementation",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"name": "MigrationCompleted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"name": "MigrationInitiated",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "admin",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newAdmin",
+						"type": "address"
+					}
+				],
+				"name": "changeAdmin",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "completeMigration",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "currentImplementation",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getCurrentImplementation",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPendingImplementation",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newImplementation",
+						"type": "address"
+					}
+				],
+				"name": "initiateMigration",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "isMigrationInProgress",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "migrationInProgress",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pendingImplementation",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Contract for managing migrations and upgrades in a contract system.",
+			"kind": "dev",
+			"methods": {
+				"changeAdmin(address)": {
+					"params": {
+						"newAdmin": "Address of the new admin."
+					}
+				},
+				"getCurrentImplementation()": {
+					"returns": {
+						"_0": "Address of the current implementation contract."
+					}
+				},
+				"getPendingImplementation()": {
+					"returns": {
+						"_0": "Address of the pending implementation contract."
+					}
+				},
+				"initiateMigration(address)": {
+					"params": {
+						"newImplementation": "Address of the new implementation contract."
+					}
+				},
+				"isMigrationInProgress()": {
+					"returns": {
+						"_0": "Boolean indicating if a migration is in progress."
+					}
+				}
+			},
+			"title": "MigrationContract",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"changeAdmin(address)": {
+					"notice": "Allows the admin to change the admin address."
+				},
+				"completeMigration()": {
+					"notice": "Completes the migration to the new implementation contract."
+				},
+				"getCurrentImplementation()": {
+					"notice": "Retrieves the current implementation address."
+				},
+				"getPendingImplementation()": {
+					"notice": "Retrieves the pending implementation address."
+				},
+				"initiateMigration(address)": {
+					"notice": "Initiates a migration to a new implementation contract."
+				},
+				"isMigrationInProgress()": {
+					"notice": "Retrieves the status of migration progress."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/migrations/MigrationContract.sol": "MigrationContract"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/migrations/MigrationContract.sol": {
+			"keccak256": "0xa89a6b560d2030d77f8ee66454a7d6c4cf7e6588165c046b8e322f1130605dbc",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://974e40660739e729414a0547880b6ddbf1349f07b04020864206401b1f553ed3",
+				"dweb:/ipfs/QmT2hFbA3FMGo7gVVG2FvEMd9TZfCEmTyNzwVzQcgrGfQN"
+			]
+		}
+	},
+	"version": 1
+}

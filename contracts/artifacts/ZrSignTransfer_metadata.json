@@ -1,0 +1,213 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_zrSignAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "fromKeyIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "gasPrice",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "gasLimit",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nonce",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "submitTransaction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "fromKeyIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "gasPrice",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "gasLimit",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nonce",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bool",
+						"name": "broadcast",
+						"type": "bool"
+					}
+				],
+				"name": "submitTransaction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_fromKeyIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_data",
+						"type": "bytes"
+					}
+				],
+				"name": "submitTransaction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "zrSignConnect",
+				"outputs": [
+					{
+						"internalType": "contract IZrSign",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/ZrSignTransfer.sol": "ZrSignTransfer"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/ZrSignTransfer.sol": {
+			"keccak256": "0x2d6d4179c120e6738856a9688652c741523ee63ca01b42192a43d824c19ff513",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1730dc6c7122fcd1efb8653a3c0d8cd4b38b5b30126d2abe357f1be4189c37b3",
+				"dweb:/ipfs/QmRqJE47ceRUA5TiPHb8dqehnWquYnnyKth3fi3Dc55NAw"
+			]
+		},
+		"contracts/interfaces/IZRSign.sol": {
+			"keccak256": "0x35bb89ca38571dc998b9a17fe4709a728813cdb49af2b797c4690dc96e458d9f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9ac740cf645c473929fcd683171aeccb22eee6060232f60200ea6163240e146c",
+				"dweb:/ipfs/QmfH91kegB7XFPDCGDTAkUTggKxk9h8aTRa86Hhu1uCngo"
+			]
+		},
+		"contracts/libraries/Lib_RLPWriter.sol": {
+			"keccak256": "0xc3ba976ee482b9c94be0319697518a84df5cdec04b87aab72ec16d3fc97a6d73",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0cbcef9ebbdacafde940ef9530bd4cc6882d71eefac4632c4aa631cc4cf588a6",
+				"dweb:/ipfs/QmbYqr8WksE93dyp6MbDi1qJ5E3MSd9F7LaqURouU56fZU"
+			]
+		},
+		"contracts/libraries/SignTypes.sol": {
+			"keccak256": "0x7fe1bd2413d4acea104fda434a0b1cbf892de9e3ad71b0f49c6a5f28f25b82c0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6052178154b4831a0c1dcc5ac8f817f2f00390698cfd6caaa0ba32b6bfb7dd53",
+				"dweb:/ipfs/Qmf7uFVnyMxpFRW2byHKwG1Lktb37UiJBqY7M5XCkxt5zk"
+			]
+		}
+	},
+	"version": 1
+}

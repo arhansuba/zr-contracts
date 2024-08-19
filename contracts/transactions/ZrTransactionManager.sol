@@ -2,6 +2,8 @@
 pragma solidity ^0.8.24;
 
 import "../wallets/ZrWallet.sol";
+import "../interfaces/IWalletManager.sol";
+import "../wallets/ZrWalletManager.sol";
 
 /**
  * @title ZrTransactionManager
@@ -25,11 +27,12 @@ contract ZrTransactionManager {
 
     mapping(address => Transaction[]) public transactions;
     mapping(address => uint256) public requiredConfirmations;
+    mapping(address => address[]) public walletOwners;
     address[] public deployedWallets;
 
     // Modifiers
     modifier onlyWalletOwner(address walletAddress) {
-        require(payable(address(ZrWallet(walletAddress))).isOwner(msg.sender), "Not authorized: Caller is not an owner");
+        require(ZrWallet(payable(walletAddress)).isOwner(msg.sender), "Not authorized: Caller is not an owner");
         _;
     }
 
@@ -56,10 +59,10 @@ contract ZrTransactionManager {
      * @param data Additional data for the transaction.
      */
     function submitTransaction(address walletAddress, address destination, uint256 value, bytes memory data) external onlyWalletOwner(walletAddress) {
-        Transaction storage tx = transactions[walletAddress].push();
-        tx.destination = destination;
-        tx.value = value;
-        tx.data = data;
+        Transaction storage newTx = transactions[walletAddress].push();
+        newTx.destination = destination;
+        newTx.value = value;
+        newTx.data = data;
 
         emit TransactionSubmitted(walletAddress, transactions[walletAddress].length - 1, destination, value, data);
     }
@@ -76,8 +79,8 @@ contract ZrTransactionManager {
         notConfirmed(walletAddress, txIndex) 
         notExecuted(walletAddress, txIndex)
     {
-        Transaction storage tx = transactions[walletAddress][txIndex];
-        tx.confirmations[msg.sender] = true;
+        Transaction storage transaction = transactions[walletAddress][txIndex];
+        transaction.confirmations[msg.sender] = true;
 
         emit TransactionConfirmed(walletAddress, txIndex, msg.sender);
 
@@ -97,10 +100,10 @@ contract ZrTransactionManager {
         transactionExists(walletAddress, txIndex) 
         notExecuted(walletAddress, txIndex)
     {
-        Transaction storage tx = transactions[walletAddress][txIndex];
-        require(tx.confirmations[msg.sender], "Transaction not confirmed by caller");
+        Transaction storage transaction = transactions[walletAddress][txIndex];
+        require(transaction.confirmations[msg.sender], "Transaction not confirmed by caller");
         
-        tx.confirmations[msg.sender] = false;
+        transaction.confirmations[msg.sender] = false;
 
         emit TransactionRevoked(walletAddress, txIndex, msg.sender);
     }
@@ -115,13 +118,23 @@ contract ZrTransactionManager {
         transactionExists(walletAddress, txIndex) 
         notExecuted(walletAddress, txIndex)
     {
-        Transaction storage tx = transactions[walletAddress][txIndex];
+        Transaction storage transaction = transactions[walletAddress][txIndex];
         require(_isConfirmed(walletAddress, txIndex), "Transaction not fully confirmed");
 
-        (bool success, ) = tx.destination.call{value: tx.value}(tx.data);
-        tx.executed = true;
+        (bool success, ) = transaction.destination.call{value: transaction.value}(transaction.data);
+        transaction.executed = true;
 
         emit TransactionExecuted(walletAddress, txIndex, success);
+    }
+
+    /**
+     * @notice Set the wallet owners for a specific wallet.
+     * @param walletAddress Address of the wallet.
+     * @param owners Array of owner addresses.
+     */
+    function setWalletOwners(address walletAddress, address[] memory owners) external {
+        // Add appropriate access control here
+        walletOwners[walletAddress] = owners;
     }
 
     /**
@@ -132,11 +145,11 @@ contract ZrTransactionManager {
      */
     function _isConfirmed(address walletAddress, uint256 txIndex) private view returns (bool) {
         uint256 count = 0;
-        Transaction storage tx = transactions[walletAddress][txIndex];
-        address[] memory owners = ZrWallet(walletAddress).getOwners();
+        Transaction storage transaction = transactions[walletAddress][txIndex];
+        address[] storage owners = walletOwners[walletAddress];
 
         for (uint256 i = 0; i < owners.length; i++) {
-            if (tx.confirmations[owners[i]]) {
+            if (transaction.confirmations[owners[i]]) {
                 count++;
             }
         }
@@ -162,7 +175,7 @@ contract ZrTransactionManager {
      * @return value Amount of funds to be sent.
      * @return data Additional data for the transaction.
      * @return executed Whether the transaction has been executed.
-     * @return confirmations Mapping of confirmations.
+     * @return confirmations Array of addresses that have confirmed the transaction.
      */
     function getTransactionDetails(address walletAddress, uint256 txIndex) 
         external 
@@ -170,18 +183,18 @@ contract ZrTransactionManager {
         transactionExists(walletAddress, txIndex)
         returns (address destination, uint256 value, bytes memory data, bool executed, address[] memory confirmations)
     {
-        Transaction storage tx = transactions[walletAddress][txIndex];
-        destination = tx.destination;
-        value = tx.value;
-        data = tx.data;
-        executed = tx.executed;
+        Transaction storage transaction = transactions[walletAddress][txIndex];
+        destination = transaction.destination;
+        value = transaction.value;
+        data = transaction.data;
+        executed = transaction.executed;
 
         uint256 confirmationsCount = 0;
-        address[] memory owners = ZrWallet(walletAddress).getOwners();
+        address[] storage owners = walletOwners[walletAddress];
         confirmations = new address[](owners.length);
 
         for (uint256 i = 0; i < owners.length; i++) {
-            if (tx.confirmations[owners[i]]) {
+            if (transaction.confirmations[owners[i]]) {
                 confirmations[confirmationsCount] = owners[i];
                 confirmationsCount++;
             }

@@ -1,0 +1,300 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newGasLimit",
+						"type": "uint256"
+					}
+				],
+				"name": "GasLimitUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "gasUsed",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"name": "GasUsageRecorded",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "DEFAULT_GAS_LIMIT",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "estimateGasUsage",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "gasLimits",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "gasUsageRecords",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					}
+				],
+				"name": "getGasLimit",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					}
+				],
+				"name": "getGasUsageRecords",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "gasUsed",
+						"type": "uint256"
+					}
+				],
+				"name": "recordGasUsage",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "newGasLimit",
+						"type": "uint256"
+					}
+				],
+				"name": "setGasLimit",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Manages and optimizes gas usage for transactions.",
+			"kind": "dev",
+			"methods": {
+				"estimateGasUsage(address,bytes)": {
+					"params": {
+						"contractAddress": "Address of the contract.",
+						"data": "Call data for the transaction."
+					},
+					"returns": {
+						"_0": "Estimated gas usage for the transaction."
+					}
+				},
+				"getGasLimit(address)": {
+					"params": {
+						"contractAddress": "Address of the contract."
+					},
+					"returns": {
+						"_0": "The gas limit for the contract."
+					}
+				},
+				"getGasUsageRecords(address)": {
+					"params": {
+						"contractAddress": "Address of the contract."
+					},
+					"returns": {
+						"_0": "Array of recorded gas usage values."
+					}
+				},
+				"recordGasUsage(address,uint256)": {
+					"params": {
+						"contractAddress": "Address of the contract.",
+						"gasUsed": "Amount of gas used in a transaction."
+					}
+				},
+				"setGasLimit(address,uint256)": {
+					"params": {
+						"contractAddress": "Address of the contract.",
+						"newGasLimit": "New gas limit to set."
+					}
+				}
+			},
+			"title": "GasManager",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"estimateGasUsage(address,bytes)": {
+					"notice": "Estimate gas usage for a transaction."
+				},
+				"getGasLimit(address)": {
+					"notice": "Get the gas limit for a contract."
+				},
+				"getGasUsageRecords(address)": {
+					"notice": "Get the recorded gas usage for a contract."
+				},
+				"recordGasUsage(address,uint256)": {
+					"notice": "Record gas usage for a contract."
+				},
+				"setGasLimit(address,uint256)": {
+					"notice": "Set a custom gas limit for a contract."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/utils/GasManager.sol": "GasManager"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/utils/GasManager.sol": {
+			"keccak256": "0xd32dcb648e59ae8d5089dcef04b9ee47d3cfa17de0168e79fe155ced475b2990",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5655d448b89276e199606bc527c1df455b092f2be00252146ec7f0cb2d3f5950",
+				"dweb:/ipfs/QmX243THuFvsY3kr4SoXLQvx7ffqVDijvJLetHMaH6Vosd"
+			]
+		}
+	},
+	"version": 1
+}

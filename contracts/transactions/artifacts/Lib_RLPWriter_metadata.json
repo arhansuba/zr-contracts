@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/transactions/ZrTransaction.sol": "Lib_RLPWriter"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/transactions/ZrTransaction.sol": {
+			"keccak256": "0x786f5610ed2bb7d2129760fabd72e002952e78503dfaaa998e986d41dad6d7e2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b4dd9944ffd44af5c0f02b47578ce43fa52036dc84a0eb024563fc2b3024556b",
+				"dweb:/ipfs/QmTkjLRsCne9NdxXFco5zyCKd6GLNzjoNnZFfUd9DkQvLd"
+			]
+		}
+	},
+	"version": 1
+}

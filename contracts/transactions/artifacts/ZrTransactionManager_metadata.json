@@ -1,0 +1,515 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "confirmer",
+						"type": "address"
+					}
+				],
+				"name": "TransactionConfirmed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					}
+				],
+				"name": "TransactionExecuted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "revoker",
+						"type": "address"
+					}
+				],
+				"name": "TransactionRevoked",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "destination",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "TransactionSubmitted",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "confirmTransaction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "deployedWallets",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getDeployedWallets",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "getTransactionDetails",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "destination",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bool",
+						"name": "executed",
+						"type": "bool"
+					},
+					{
+						"internalType": "address[]",
+						"name": "confirmations",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "requiredConfirmations",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "revokeConfirmation",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_requiredConfirmations",
+						"type": "uint256"
+					}
+				],
+				"name": "setRequiredConfirmations",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address[]",
+						"name": "owners",
+						"type": "address[]"
+					}
+				],
+				"name": "setWalletOwners",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "walletAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "destination",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "submitTransaction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "transactions",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "destination",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bool",
+						"name": "executed",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "walletOwners",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Manages transactions between ZrWallet instances.",
+			"kind": "dev",
+			"methods": {
+				"confirmTransaction(address,uint256)": {
+					"params": {
+						"txIndex": "Index of the transaction to confirm.",
+						"walletAddress": "Address of the wallet."
+					}
+				},
+				"getDeployedWallets()": {
+					"returns": {
+						"_0": "Array of wallet addresses."
+					}
+				},
+				"getTransactionDetails(address,uint256)": {
+					"params": {
+						"txIndex": "Index of the transaction.",
+						"walletAddress": "Address of the wallet."
+					},
+					"returns": {
+						"confirmations": "Array of addresses that have confirmed the transaction.",
+						"data": "Additional data for the transaction.",
+						"destination": "Address of the transaction destination.",
+						"executed": "Whether the transaction has been executed.",
+						"value": "Amount of funds to be sent."
+					}
+				},
+				"revokeConfirmation(address,uint256)": {
+					"params": {
+						"txIndex": "Index of the transaction to revoke.",
+						"walletAddress": "Address of the wallet."
+					}
+				},
+				"setRequiredConfirmations(address,uint256)": {
+					"params": {
+						"_requiredConfirmations": "Number of confirmations required.",
+						"walletAddress": "Address of the wallet."
+					}
+				},
+				"setWalletOwners(address,address[])": {
+					"params": {
+						"owners": "Array of owner addresses.",
+						"walletAddress": "Address of the wallet."
+					}
+				},
+				"submitTransaction(address,address,uint256,bytes)": {
+					"params": {
+						"data": "Additional data for the transaction.",
+						"destination": "Address to send funds to.",
+						"value": "Amount of funds to send.",
+						"walletAddress": "Address of the wallet."
+					}
+				}
+			},
+			"title": "ZrTransactionManager",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"confirmTransaction(address,uint256)": {
+					"notice": "Confirm a transaction."
+				},
+				"getDeployedWallets()": {
+					"notice": "Get all deployed wallet addresses."
+				},
+				"getTransactionDetails(address,uint256)": {
+					"notice": "Get the details of a transaction."
+				},
+				"revokeConfirmation(address,uint256)": {
+					"notice": "Revoke a confirmation for a transaction."
+				},
+				"setRequiredConfirmations(address,uint256)": {
+					"notice": "Set the required confirmations for a wallet."
+				},
+				"setWalletOwners(address,address[])": {
+					"notice": "Set the wallet owners for a specific wallet."
+				},
+				"submitTransaction(address,address,uint256,bytes)": {
+					"notice": "Submit a new transaction for a wallet."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/transactions/ZrTransactionManager.sol": "ZrTransactionManager"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/interfaces/IWalletManager.sol": {
+			"keccak256": "0xc4214786cf43e75d353f73e1445fb5575102fd9495a64bfff74d1a27b648292c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8ffbe2ae6b4b0e15fa4b6fd7831dfb5b8e3c808d271143c299b907f3bc77ba9b",
+				"dweb:/ipfs/QmVmGS5p3LKCjLyng1Nmd9YyxL1rzdaFgRy3WAJbcHYUhG"
+			]
+		},
+		"contracts/transactions/ZrTransactionManager.sol": {
+			"keccak256": "0x41b929e730db4091ac9add532036bec6c5011fb7c591d46ac02389d222ac9640",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2e871ca6ea5ed13fb4cd50c8f3018009bbdb628b8bd6a5682efacfca78bc37af",
+				"dweb:/ipfs/QmT6hh9c9mma6kXiYx97Ewe8wP8c787n385RLPT4GwpTWY"
+			]
+		},
+		"contracts/wallets/ZrWallet.sol": {
+			"keccak256": "0x80aefffe849f1064624516dcde5d3bef5e2d9f5f876999373c61a7fa8816fda2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c3f936f7ae46e319ffcdefedfd12a2b856ece976f6c1261c2e42001be007d041",
+				"dweb:/ipfs/QmRnfJcCrNSzjpFKofmwfNvMUkZi4t3Eyoj6tdEmAyuSmc"
+			]
+		},
+		"contracts/wallets/ZrWalletManager.sol": {
+			"keccak256": "0x1bf2988fe9375e0309f28788966b368588856e9a38159f98ed81d22bb089c3f4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9ef730c3229c552e2c19bc0dffb920ba01bbcd857940293b017af8a982fdf2a5",
+				"dweb:/ipfs/QmTBdXF4cxXrEvsK6Jz4fNCdRauW7gtkdrYMxShuen2xhg"
+			]
+		}
+	},
+	"version": 1
+}
